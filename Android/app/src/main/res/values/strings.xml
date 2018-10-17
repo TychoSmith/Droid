@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Android</string>
+    <string name="label_default_text">PRICE</string>
+    <string name="imageview_desc">CoinTracker</string>string>
+</resources>
