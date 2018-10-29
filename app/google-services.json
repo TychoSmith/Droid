@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "1025922012162",
+    "firebase_url": "https://chatapp-defd3.firebaseio.com",
+    "project_id": "chatapp-defd3",
+    "storage_bucket": "chatapp-defd3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1025922012162:android:82001f386502ef94",
+        "android_client_info": {
+          "package_name": "com.fpandroidapp.flashchatnewfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1025922012162-emdknh5asorr35thj657i9i92spv4od2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3lRO8ZAXPbueCeJqQR8Yfju_HQ6wiLXc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1025922012162:android:77e9d0e905583208",
+        "android_client_info": {
+          "package_name": "com.londonappbrewery.flashchatnewfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1025922012162-emdknh5asorr35thj657i9i92spv4od2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3lRO8ZAXPbueCeJqQR8Yfju_HQ6wiLXc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
