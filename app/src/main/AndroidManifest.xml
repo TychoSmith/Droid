@@ -21,6 +21,9 @@
         <activity android:name=".coinTicker">
 
         </activity>
+        <activity android:name=".camCam">
+
+        </activity>
     </application>
 
 </manifest>

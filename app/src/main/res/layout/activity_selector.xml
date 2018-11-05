@@ -27,6 +27,7 @@
         android:layout_marginTop="150dp"
         android:layout_marginEnd="161dp"
         android:text="@string/btnCamcam"
+        android:onClick="startCamCam"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"

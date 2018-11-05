@@ -2,7 +2,7 @@
     <string name="app_name">PickAPick</string>
     <string name="btnCoinTracker">CoinTicker</string>
     <string name="btnCamcam">CamCam</string>
-    <string name="label_default_text">1234</string>
+    <string name="label_default_text">Checking market..</string>
     <string name="label_error_text">Error</string>
     <string name="base">Currency</string>
     <string name="imageview_desc">Bitcoin Logo</string>
