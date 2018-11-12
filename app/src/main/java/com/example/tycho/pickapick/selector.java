@@ -19,4 +19,8 @@ public class selector extends AppCompatActivity {
         Intent myIntent = new Intent(getBaseContext(), coinTicker.class);
         startActivity(myIntent);
     }
+    public void startWeather(View v){
+        Intent myIntent = new Intent(getBaseContext(), WeatherController.class);
+        startActivity(myIntent);
+    }
 }

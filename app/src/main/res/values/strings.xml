@@ -7,6 +7,14 @@
     <string name="base">Currency</string>
     <string name="imageview_desc">Bitcoin Logo</string>
 
+    <string name="weather">Weather app</string>
+    <string name="default_location">Fetching Location</string>
+    <string name="default_temp">NA</string>
+    <string name="change_city_description">Click Here to Change City</string>
+    <string name="weather_description">This is the weather symbol</string>
+    <string name="back_button_description">Dismiss Change City Screen</string>
+    <string name="get_weather">Change City</string>
+    <string name="default_query">Enter city name</string>
 
     <string-array name="currency_array">
         <item>EUR</item>
@@ -18,3 +26,4 @@
         <item>CNY</item>
     </string-array>
 </resources>
+

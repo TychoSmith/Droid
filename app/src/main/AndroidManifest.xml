@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tycho.pickapick">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
@@ -19,6 +20,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".coinTicker">
+
+        </activity>
+        <activity android:name=".WeatherController">
 
         </activity>
     </application>
