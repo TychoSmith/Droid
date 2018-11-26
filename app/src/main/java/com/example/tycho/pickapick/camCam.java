@@ -14,7 +14,7 @@ public class camCam extends Activity {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_camcam);
 
-            Intent i=new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+            Intent i=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             startActivity(i);
     }
     @Override
