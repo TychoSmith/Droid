@@ -29,50 +29,27 @@ import cz.msebera.android.httpclient.Header;
 
 
 public class WeatherController extends AppCompatActivity {
-
-    // Request Codes:
-    final int REQUEST_CODE = 123; // Request Code for permission request callback
-    final int NEW_CITY_CODE = 456; // Request code for starting new activity for result callback
-
-    // Base URL for the OpenWeatherMap API. More secure https is a premium feature =(
+    final int REQUEST_CODE = 123;
+    final int NEW_CITY_CODE = 456;
     final String WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather";
-
-    // App ID to use OpenWeather data
     final String APP_ID = "e72ca729af228beabd5d20e3b7749713";
-
-    // Time between location updates (5000 milliseconds or 5 seconds)
     final long MIN_TIME = 5000;
-
-    // Distance between location updates (1000m or 1km)
     final float MIN_DISTANCE = 1000;
-
-    // Don't want to type 'Clima' in all the logs, so putting this in a constant here.
     final String LOGCAT_TAG = "Clima";
-
-    // Set LOCATION_PROVIDER here. Using GPS_Provider for Fine Location (good for emulator):
-    // Recommend using LocationManager.NETWORK_PROVIDER on physical devices (reliable & fast!)
     final String LOCATION_PROVIDER = LocationManager.GPS_PROVIDER;
 
-    // Member Variables:
     boolean mUseLocation = true;
     TextView mCityLabel;
     ImageView mWeatherImage;
     TextView mTemperatureLabel;
 
-    // Declaring a LocationManager and a LocationListener here:
     LocationManager mLocationManager;
     LocationListener mLocationListener;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.weather_controller_layout);
-
-        // Linking the elements in the layout to Java code.
-        // API 26 and above does not require casting anymore.
-        // Can write: mCityLabel = findViewById(R.id.locationTV);
-        // Instead of: mCityLabel = (TextView) findViewById(R.id.locationTV);
 
         mCityLabel = findViewById(R.id.locationTV);
 
@@ -80,21 +57,15 @@ public class WeatherController extends AppCompatActivity {
         mTemperatureLabel = findViewById(R.id.tempTV);
         ImageButton changeCityButton = findViewById(R.id.changeCityButton);
 
-        // Add an OnClickListener to the changeCityButton here:
         changeCityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(WeatherController.this, ChangeCityController.class);
-
-                // Using startActivityForResult since we just get back the city name.
-                // Providing an arbitrary request code to check against later.
                 startActivityForResult(myIntent, NEW_CITY_CODE);
             }
         });
     }
 
-
-    // onResume() life cyle callback:
     @Override
     protected void onResume() {
         super.onResume();
@@ -102,8 +73,6 @@ public class WeatherController extends AppCompatActivity {
         if(mUseLocation) getWeatherForCurrentLocation();
     }
 
-    // Callback received when a new city name is entered on the second screen.
-    // Checking request code and if result is OK before making the API call.
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -121,18 +90,15 @@ public class WeatherController extends AppCompatActivity {
         }
     }
 
-    // Configuring the parameters when a new city has been entered:
     private void getWeatherForNewCity(String city) {
         Log.d(LOGCAT_TAG, "Getting weather for new city");
         RequestParams params = new RequestParams();
         params.put("q", city);
         params.put("appid", APP_ID);
-
         letsDoSomeNetworking(params);
     }
 
 
-    // Location Listener callbacks here, when the location has changed.
     private void getWeatherForCurrentLocation() {
 
         Log.d(LOGCAT_TAG, "Getting weather for current location");
@@ -149,7 +115,6 @@ public class WeatherController extends AppCompatActivity {
                 Log.d(LOGCAT_TAG, "longitude is: " + longitude);
                 Log.d(LOGCAT_TAG, "latitude is: " + latitude);
 
-                // Providing 'lat' and 'lon' (spelling: Not 'long') parameter values
                 RequestParams params = new RequestParams();
                 params.put("lat", latitude);
                 params.put("lon", longitude);
@@ -175,22 +140,12 @@ public class WeatherController extends AppCompatActivity {
             }
         };
 
-        // This is the permission check to access (fine) location.
-
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             ActivityCompat.requestPermissions(this,
                     new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
             return;
         }
 
-        // Some additional log statements to help you debug
         Log.d(LOGCAT_TAG, "Location Provider used: "
                 + mLocationManager.getProvider(LOCATION_PROVIDER).getName());
         Log.d(LOGCAT_TAG, "Location Provider is enabled: "
@@ -199,23 +154,17 @@ public class WeatherController extends AppCompatActivity {
                 + mLocationManager.getLastKnownLocation(LOCATION_PROVIDER));
         Log.d(LOGCAT_TAG, "Requesting location updates");
 
-
         mLocationManager.requestLocationUpdates(LOCATION_PROVIDER, MIN_TIME, MIN_DISTANCE, mLocationListener);
-
     }
 
-    // This is the callback that's received when the permission is granted (or denied)
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        // Checking against the request code we specified earlier.
         if (requestCode == REQUEST_CODE) {
 
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Log.d(LOGCAT_TAG, "onRequestPermissionsResult(): Permission granted!");
-
-                // Getting weather only if we were granted permission.
                 getWeatherForCurrentLocation();
             } else {
                 Log.d(LOGCAT_TAG, "Permission denied =( ");
@@ -224,14 +173,8 @@ public class WeatherController extends AppCompatActivity {
 
     }
 
-
-    // This is the actual networking code. Parameters are already configured.
     private void letsDoSomeNetworking(RequestParams params) {
-
-        // AsyncHttpClient belongs to the loopj dependency.
         AsyncHttpClient client = new AsyncHttpClient();
-
-        // Making an HTTP GET request by providing a URL and the parameters.
         client.get(WEATHER_URL, params, new JsonHttpResponseHandler() {
 
             @Override
@@ -255,19 +198,14 @@ public class WeatherController extends AppCompatActivity {
         });
     }
 
-
-
-    // Updates the information shown on screen.
     private void updateUI(WeatherDataModel weather) {
         mTemperatureLabel.setText(weather.getTemperature());
         mCityLabel.setText(weather.getCity());
 
-        // Update the icon based on the resource id of the image in the drawable folder.
         int resourceID = getResources().getIdentifier(weather.getIconName(), "drawable", getPackageName());
         mWeatherImage.setImageResource(resourceID);
     }
 
-    // Freeing up resources when the app enters the paused state.
     @Override
     protected void onPause() {
         super.onPause();

@@ -5,18 +5,12 @@ import org.json.JSONObject;
 
 public class WeatherDataModel {
 
-    // Member variables that hold our relevant weather inforomation.
     private String mTemperature;
     private String mCity;
     private String mIconName;
     private int mCondition;
 
-
-    // Create a WeatherDataModel from a JSON.
-    // We will call this instead of the standard constructor.
     public static WeatherDataModel fromJson(JSONObject jsonObject) {
-
-        // JSON parsing is risky business. Need to surround the parsing code with a try-catch block.
         try {
             WeatherDataModel weatherData = new WeatherDataModel();
 
@@ -37,9 +31,7 @@ public class WeatherDataModel {
         }
     }
 
-    // Get the weather image name from OpenWeatherMap's condition (marked by a number code)
     private static String updateWeatherIcon(int condition) {
-
         if (condition >= 0 && condition < 300) {
             return "tstorm1";
         } else if (condition >= 300 && condition < 500) {
@@ -68,8 +60,6 @@ public class WeatherDataModel {
 
         return "dunno";
     }
-
-    // Getter methods for temperature, city, and icon name:
 
     public String getTemperature() {
         return mTemperature + "°";

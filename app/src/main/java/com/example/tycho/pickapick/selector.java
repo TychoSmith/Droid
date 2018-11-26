@@ -14,7 +14,6 @@ public class selector extends AppCompatActivity {
         setContentView(R.layout.activity_selector);
     }
 
-
     public void startCoinTicker(View v){
         Intent myIntent = new Intent(getBaseContext(), coinTicker.class);
         startActivity(myIntent);
@@ -25,6 +24,11 @@ public class selector extends AppCompatActivity {
     }
     public void startWeather(View v){
         Intent myIntent = new Intent(getBaseContext(), WeatherController.class);
+        startActivity(myIntent);
+    }
+
+    public void startChat (View v){
+        Intent myIntent = new Intent(getBaseContext(), LoginActivity.class);
         startActivity(myIntent);
     }
 
