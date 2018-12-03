@@ -12,6 +12,7 @@ public class selector extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selector);
+
     }
 
     public void startCoinTicker(View v){
@@ -30,6 +31,7 @@ public class selector extends AppCompatActivity {
     public void startChat (View v){
         Intent myIntent = new Intent(getBaseContext(), LoginActivity.class);
         startActivity(myIntent);
+
     }
 
 }

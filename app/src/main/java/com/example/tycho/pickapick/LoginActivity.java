@@ -64,6 +64,7 @@ public class LoginActivity extends AppCompatActivity {
             if (email.equals("") || password.equals("")) return;
         Toast.makeText(this, "Login in progress...", Toast.LENGTH_SHORT).show();
 
+
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -78,10 +79,14 @@ public class LoginActivity extends AppCompatActivity {
                     finish();
                     startActivity(intent);
                 }
+
             }
         });
+
+
     }
 
+    // TODO: Show error on screen with an alert dialog
     private void showErrorDialog(String message) {
 
         new AlertDialog.Builder(this)
@@ -91,4 +96,7 @@ public class LoginActivity extends AppCompatActivity {
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .show();
     }
+
+
+
 }

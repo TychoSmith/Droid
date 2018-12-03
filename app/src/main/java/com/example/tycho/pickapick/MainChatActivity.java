@@ -66,7 +66,7 @@ public class MainChatActivity extends AppCompatActivity {
 
     private void sendMessage() {
 
-        Log.d("FlashChat", "I sent something");
+        Log.d("Chatapp", "I sent something");
         String input = mInputText.getText().toString();
         if (!input.equals("")) {
             InstantMessage chat = new InstantMessage(input, mDisplayName);

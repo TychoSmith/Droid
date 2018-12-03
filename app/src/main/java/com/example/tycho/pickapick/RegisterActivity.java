@@ -113,9 +113,9 @@ public class RegisterActivity extends AppCompatActivity {
 
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d("FlashChat", "createUser onComplete: " + task.isSuccessful());
+                        Log.d("Chatapp", "createUser onComplete: " + task.isSuccessful());
                         if(!task.isSuccessful()){
-                            Log.d("FlashChat", "user creation failed");
+                            Log.d("Chatapp", "user creation failed");
                             showErrorDialog("Registration attempt failed");
                         } else {
                             saveDisplayName();
